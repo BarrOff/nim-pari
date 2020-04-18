@@ -18,12 +18,12 @@ Examples can be found in the example folder and are taken from the documentation
 
 ### To-do
 
-[ ] add option to build pari from source
-[ ] add all symbols skipped by nimterop
-[ ] build higher level API
-[ ] add more examples
-[ ] add a testsuite
-[ ] add more documentation
+- [ ] add option to build pari from source
+- [ ] add all symbols skipped by nimterop
+- [ ] build higher level API
+- [ ] add more examples
+- [ ] add a testsuite
+- [ ] add more documentation
 
 ### Credits
 
