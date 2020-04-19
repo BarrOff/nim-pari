@@ -20,7 +20,7 @@ static:
   cDisableCaching()
 
   # The following symbols have to be skipped for now in order for nimterop to work
-  cSkipSymbol @["ZC_z_mul", "ZM_zc_mul", "zm_zc_mul", "gp_context", "gp_context_save", "gp_context_restore"]
+  cSkipSymbol @["gp_context", "gp_context_save", "gp_context_restore", "INLINE"]
 
   # Add standard directories to search for the header files
   cAddStdDir()
@@ -97,6 +97,12 @@ cPlugin:
         sym.name = "permorder2"
       elif sym.name == "perm_sign":
         sym.name = "permsign2"
+      elif sym.name == "ZC_z_mul":
+        sym.name = "ZC_z_mul2"
+      elif sym.name == "ZM_zc_mul":
+        sym.name = "ZM_zc_mul2"
+      elif sym.name == "zm_zc_mul":
+        sym.name = "zm_zc_mul3"
     elif sym.kind == nskParam and sym.name == "pt_r":
       # a few functions have a parameter called pt_t
       # which collides with the ptr keyword in Nim
