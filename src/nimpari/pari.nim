@@ -24,7 +24,7 @@ static:
   cDisableCaching()
 
   # The following symbols have to be skipped for now in order for nimterop to work
-  cSkipSymbol @["gp_context", "gp_context_save", "gp_context_restore", "INLINE"]
+  cSkipSymbol @["gp_context", "gp_context_save", "gp_context_restore", "INLINE", "inline", "__inline__"]
 
   # Add standard directories to search for the header files
   cAddStdDir()
