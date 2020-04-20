@@ -40,7 +40,6 @@ static:
         prev*: ptr pariFILE
         next*: ptr pariFILE
 
-doAssert cSearchPath("pari/pari.h").existsFile
 
 cPlugin:
   import strutils
@@ -80,6 +79,8 @@ cPlugin:
       sym.name = "genptr"
 
 {.passL: "-lpari".}
+
+doAssert cSearchPath("pari/pari.h").existsFile
 
 cImport(cSearchPath("pari/pari.h"), dynlib="dynpari", recurse = true, flags = "-c -p -f=ast2")
 # The following functions are created with ptr FILE in their
