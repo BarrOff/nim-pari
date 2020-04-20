@@ -29,16 +29,16 @@ static:
   # Add standard directories to search for the header files
   cAddStdDir()
 
-  cOverride:
-    const c_NONE* {.importc: "c_NONE", header: "pari/pari.h".} = 0xffff'u32
+cOverride:
+  const c_NONE* {.importc: "c_NONE", header: "pari/pari.h".} = 0xffff'u32
 
-    type
-      pariFILE* {.bycopy, importc: "struct pariFILE", header: "pari/pari.h".} = object
-        file*: FILE
-        `type`*: cint
-        name*: cstring
-        prev*: ptr pariFILE
-        next*: ptr pariFILE
+  type
+    pariFILE* {.bycopy, importc: "struct pariFILE", header: "pari/pari.h".} = object
+      file*: FILE
+      `type`*: cint
+      name*: cstring
+      prev*: ptr pariFILE
+      next*: ptr pariFILE
 
 cDefine("DISABLE_INLINE", "")
 
