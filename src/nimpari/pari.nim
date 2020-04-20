@@ -74,7 +74,13 @@ cPlugin:
         sym.name = "ZM_zc_mul2"
       elif sym.name == "zm_zc_mul":
         sym.name = "zm_zc_mul3"
-    elif sym.kind == nskParam and sym.name == "pt_r":
+      elif sym.name == "ZX_Q_mul":
+        sym.name = "ZX_Q_mul2"
+      elif sym.name == "powis":
+        sym.name = "powIs2"
+      elif sym.name == "quad_disc":
+        sym.name = "quaddisc2"
+    elif sym.name == "pt_r":
       # a few functions have a parameter called pt_t
       # which collides with the ptr keyword in Nim
       sym.name = "genptr"
