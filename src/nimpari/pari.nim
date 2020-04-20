@@ -40,6 +40,7 @@ static:
         prev*: ptr pariFILE
         next*: ptr pariFILE
 
+cDefine("DISABLE_INLINE", "")
 
 cPlugin:
   import strutils
