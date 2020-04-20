@@ -40,39 +40,6 @@ static:
         prev*: ptr pariFILE
         next*: ptr pariFILE
 
-    # The following functions are created with ptr FILE in their
-    # declaration by nimterop but they need just normal Nim File
-    proc file_is_binary*(f: File): cint {.importc: "file_is_binary", header: "pari/pari.h".}
-    proc gp_read_stream*(f: File): GEN {.importc: "gp_read_stream", header: "pari/pari.h".}
-    proc gp_readvec_stream*(f: File): GEN {.importc: "gp_readvec_stream", header: "pari/pari.h".}
-    proc pari_fprintf*(file: File, fmt: cstring) {.importc: "pari_fprintf", header: "pari/pari.h", varargs.}
-    proc pari_fread_chars*(b: pointer, n: uint, f: File) {.importc: "pari_fread_chars", header: "pari/pari.h".}
-    proc pari_vfprintf*(file: File, fmt: cstring, ap: va_list) {.importc: "pari_vfprintf", header: "pari/pari.h".}
-    proc switchin*(name: cstring): File {.importc: "switchin", header: "pari/pari.h".}
-
-    # The folloting functions can take a variable number of
-    # parameters. Nimterop does not include the  varargs
-    # pragma so they are inserted here
-    proc strtoclosure*(s: cstring, n: clong): GEN {.importc: "strtoclosure", header: "pari/pari.h", varargs.}
-    proc err_printf*(pat: cstring) {.importc: "err_printf", header: "pari/pari.h", varargs.}
-    proc gsprintf*(fmt: cstring): GEN {.importc: "gsprintf", header: "pari/pari.h", varargs.}
-    proc pari_printf*(fmt: cstring) {.importc: "pari_printf", header: "pari/pari.h", varargs.}
-    proc pari_sprintf*(fmt: cstring): cstring {.importc: "pari_sprintf", header: "pari/pari.h", varargs.}
-    proc out_printf*(`out`: ptr PariOUT, fmt: cstring) {.importc: "out_printf", header: "pari/pari.h", varargs.}
-    proc stack_sprintf*(fmt: cstring): cstring {.importc: "stack_sprintf", header: "pari/pari.h", varargs.}
-    proc str_printf*(S: ptr pari_str, fmt: cstring) {.importc: "str_printf", header: "pari/pari.h", varargs.}
-    proc closure_callgenall*(C: GEN, n: clong): GEN {.importc: "closure_callgenall", header: "pari/pari.h", varargs.}
-    proc mkcoln*(n: clong): GEN {.importc: "mkcoln", header: "pari/pari.h", varargs.}
-    proc mkintn*(n: clong): GEN {.importc: "mkintn", header: "pari/pari.h", varargs.}
-    proc mkpoln*(n: clong): GEN {.importc: "mkpoln", header: "pari/pari.h", varargs.}
-    proc mkvecn*(n: clong): GEN {.importc: "mkvecn", header: "pari/pari.h", varargs.}
-    proc mkvecsmalln*(n: clong): GEN {.importc: "mkvecsmalln", header: "pari/pari.h", varargs.}
-    proc gerepileallsp*(av: pari_sp, tetpil: pari_sp, n: cint) {.importc: "gerepileallsp", header: "pari/pari.h", varargs.}
-    proc timer_printf*(T: ptr pari_timer, format: cstring) {.importc: "timer_printf", header: "pari/pari.h", varargs.}
-    proc msgtimer*(format: cstring) {.importc: "msgtimer", header: "pari/pari.h", varargs.}
-    proc pari_err*(numerr: cint) {.importc: "pari_err", header: "pari/pari.h", varargs.}
-    proc pari_warn*(numerr: cint) {.importc: "pari_warn", header: "pari/pari.h", varargs.}
-
 doAssert cSearchPath("pari/pari.h").existsFile
 
 cPlugin:
@@ -115,3 +82,36 @@ cPlugin:
 {.passL: "-lpari".}
 
 cImport(cSearchPath("pari/pari.h"), dynlib="dynpari", recurse = true, flags = "-c")
+# The following functions are created with ptr FILE in their
+# declaration by nimterop but they need just normal Nim File
+proc file_is_binary*(f: File): cint {.importc: "file_is_binary", header: "pari/pari.h".}
+proc gp_read_stream*(f: File): GEN {.importc: "gp_read_stream", header: "pari/pari.h".}
+proc gp_readvec_stream*(f: File): GEN {.importc: "gp_readvec_stream", header: "pari/pari.h".}
+proc pari_fprintf*(file: File, fmt: cstring) {.importc: "pari_fprintf", header: "pari/pari.h", varargs.}
+proc pari_fread_chars*(b: pointer, n: uint, f: File) {.importc: "pari_fread_chars", header: "pari/pari.h".}
+proc pari_vfprintf*(file: File, fmt: cstring, ap: va_list) {.importc: "pari_vfprintf", header: "pari/pari.h".}
+# proc switchin*(name: cstring): File {.importc: "switchin", header: "pari/pari.h".}
+
+# The folloting functions can take a variable number of
+# parameters. Nimterop does not include the  varargs
+# pragma so they are inserted here
+# proc strtoclosure*(s: cstring, n: clong): GEN {.importc: "strtoclosure", header: "pari/pari.h", varargs.}
+# proc err_printf*(pat: cstring) {.importc: "err_printf", header: "pari/pari.h", varargs.}
+# proc gsprintf*(fmt: cstring): GEN {.importc: "gsprintf", header: "pari/pari.h", varargs.}
+# proc pari_printf*(fmt: cstring) {.importc: "pari_printf", header: "pari/pari.h", varargs.}
+# proc pari_sprintf*(fmt: cstring): cstring {.importc: "pari_sprintf", header: "pari/pari.h", varargs.}
+# proc out_printf*(`out`: ptr PariOUT, fmt: cstring) {.importc: "out_printf", header: "pari/pari.h", varargs.}
+# proc stack_sprintf*(fmt: cstring): cstring {.importc: "stack_sprintf", header: "pari/pari.h", varargs.}
+# proc str_printf*(S: ptr pari_str, fmt: cstring) {.importc: "str_printf", header: "pari/pari.h", varargs.}
+# proc closure_callgenall*(C: GEN, n: clong): GEN {.importc: "closure_callgenall", header: "pari/pari.h", varargs.}
+# proc mkcoln*(n: clong): GEN {.importc: "mkcoln", header: "pari/pari.h", varargs.}
+# proc mkintn*(n: clong): GEN {.importc: "mkintn", header: "pari/pari.h", varargs.}
+# proc mkpoln*(n: clong): GEN {.importc: "mkpoln", header: "pari/pari.h", varargs.}
+# proc mkvecn*(n: clong): GEN {.importc: "mkvecn", header: "pari/pari.h", varargs.}
+# proc mkvecsmalln*(n: clong): GEN {.importc: "mkvecsmalln", header: "pari/pari.h", varargs.}
+# proc gerepileallsp*(av: pari_sp, tetpil: pari_sp, n: cint) {.importc: "gerepileallsp", header: "pari/pari.h", varargs.}
+# proc timer_printf*(T: ptr pari_timer, format: cstring) {.importc: "timer_printf", header: "pari/pari.h", varargs.}
+# proc msgtimer*(format: cstring) {.importc: "msgtimer", header: "pari/pari.h", varargs.}
+# proc pari_err*(numerr: cint) {.importc: "pari_err", header: "pari/pari.h", varargs.}
+# proc pari_warn*(numerr: cint) {.importc: "pari_warn", header: "pari/pari.h", varargs.}
+
