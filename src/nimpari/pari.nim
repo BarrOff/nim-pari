@@ -81,7 +81,7 @@ cPlugin:
 
 {.passL: "-lpari".}
 
-cImport(cSearchPath("pari/pari.h"), dynlib="dynpari", recurse = true, flags = "-c")
+cImport(cSearchPath("pari/pari.h"), dynlib="dynpari", recurse = true, flags = "-c -p -f=ast2")
 # The following functions are created with ptr FILE in their
 # declaration by nimterop but they need just normal Nim File
 proc file_is_binary*(f: File): cint {.importc: "file_is_binary", header: "pari/pari.h".}
