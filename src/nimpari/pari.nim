@@ -1,17 +1,21 @@
 import os
 import nimterop/cimport
 
-const
-  dynpari =
-    when defined(windows):
-      when defined(cpu64):
-        "pari64.dll"
-      else:
-        "pari32.dll"
-    elif hostOS == "macosx":
-      "libpari(.3|.1|).dylib"
+when defined(windows):
+  const dynpari =
+    when defined(cpu64):
+      "pari64.dll"
     else:
-      "libpari.so(.3|.1|.6|)"
+      "pari32.dll"
+elif defined(posix):
+  when defined(linux) or defined(FreeBSD):
+    const dynpari = "libpari.so(.3|.1|.6|)"
+  elif defined(osx):
+    const dynpari = "libpari(.3|.1|).dylib"
+  else:
+    static: doAssert false
+else:
+  static: doAssert false
 
 static:
   # cDebug()
