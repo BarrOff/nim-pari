@@ -36,9 +36,9 @@ proc extgcd(A, B: GEN, U, V: var GEN): GEN =
 pari_init(1000000, 2)
 var
   x, y, d, u, v: GEN
-echo "x = "
+pari_printf "x = "
 x = gp_read_stream(stdin)
-echo "y = "
+pari_printf "y = "
 y = gp_read_stream(stdin)
 d = extgcd(x, y, u, v)
 pari_printf("gcd = %Ps\nu = %Ps\nv = %Ps\n", d, u, v)
