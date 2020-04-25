@@ -1,6 +1,5 @@
 import nimpari/pari
 export pari
-import nimpari/private/[paristio, paricom, paridecl]
+import nimpari/private/[paristio, paricom]
 export paristio
 export paricom
-export paridecl
