@@ -19,9 +19,7 @@ else:
 
 static:
   # cDebug()
-
-  # does not compile without
-  cDisableCaching()
+  # cDisableCaching()
 
   # The following symbols have to be skipped for now in order for nimterop to work
   cSkipSymbol @["gp_context", "gp_context_save", "gp_context_restore"]
