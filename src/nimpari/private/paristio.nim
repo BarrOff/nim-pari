@@ -1,6 +1,6 @@
 import nimpari/pari
 
-{.push header: "pari/pari.h"}
+{.push header: "pari/paristio.h"}
 # declarations from pari/paristio.h
 var pari_mstack* {.importc: "pari_mainstack".}: ptr pari_mainstack
 var GP_DATA* {.importc: "GP_DATA".}: ptr gp_data
