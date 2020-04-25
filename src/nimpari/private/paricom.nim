@@ -2,6 +2,8 @@ import nimpari/pari
 
 {.push header: "pari/pari.h".}
 # declarations from pari/paricom.h
+const M_PI* {.importc: "M_PI".} = 3.141592653589793
+const M_LN2* {.importc: "M_LN2".} = 0.6931471805599453
 var CATCH_ALL* {.importc: "CATCH_ALL".}: clong
 var LOG10_2* {.importc: "LOG10_2".}: cdouble
 var LOG2_10* {.importc: "LOG2_10".}: cdouble
