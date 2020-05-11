@@ -1,6 +1,8 @@
 import os
 import nimterop/cimport
 
+{.experimental: "codeReordering".}
+
 when defined(windows):
   const dynpari =
     when defined(cpu64):
@@ -22,7 +24,7 @@ static:
   # cDisableCaching()
 
   # The following symbols have to be skipped for now in order for nimterop to work
-  cSkipSymbol @["gp_context", "gp_context_save", "gp_context_restore"]
+  cSkipSymbol @["gp_context", "gp_context_save", "gp_context_restore"]#, "ONLY_REM", "ONLY_DIVIDES"]
 
   # Add standard directories to search for the header files
   cAddStdDir()
@@ -80,3 +82,7 @@ cPlugin:
 doAssert cSearchPath("pari/pari.h").existsFile
 
 cImport(cSearchPath("pari/pari.h"), dynlib="dynpari", recurse = true, flags = "-c -p -f=ast2")
+
+# const are used before types, therefore GEN is not available as const type
+# const ONLY_REM* {.importc: "ONLY_REM", header: "pari/pari.h".} = cast[ptr GEN](0x00000001'i32)
+# const ONLY_DIVIDES* {.importc: "ONLY_DIVIDES", header: "pari/pari.h".} = cast[ptr GEN](0x00000002'i32)
