@@ -5,7 +5,7 @@ nim-pari is a [Nim](https://nim-lang.org) wrapper for the [PARI](https://pari.ma
 ## Status
 
 **This library is still subject to development!**
-Nim-pari is distributed as a [Nimble](https://github.com/nim-lang/nimble) package and currently depends on the #head version of [nimterop](https://github.com/nimterop/nimterop) to generate the wrapper. I could not find a way to tell nimble to use the #head version of nimterop, so the nimble file states it depends on "nimterop >= 0.4.4".
+Nim-pari is distributed as a [Nimble](https://github.com/nim-lang/nimble) package and currently depends on the #head version of [nimterop](https://github.com/nimterop/nimterop) to generate the wrapper.
 In the current state, a previous installation of pari is required for usage. Building PARI from source might be added in the future.
 
 I started this a side project of mine to learn using Nim's [FFI](https://nim-lang.org/docs/backends.html) and [nimterop](https://github.com/nimterop/nimterop/). Nimterop is used to process most of PARI's header files, however some things still have to be converted manually. Breakage of those is therefore likely. 
