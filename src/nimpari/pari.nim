@@ -24,7 +24,8 @@ static:
   # cDisableCaching()
 
   # The following symbols have to be skipped for now in order for nimterop to work
-  cSkipSymbol @["gp_context", "gp_context_save", "gp_context_restore", "ONLY_REM", "ONLY_DIVIDES"]
+  cSkipSymbol @["gp_context", "gp_context_save", "gp_context_restore",
+      "ONLY_REM", "ONLY_DIVIDES", "lontyp", "struct"]
 
   # Add standard directories to search for the header files
   cAddStdDir()
@@ -72,6 +73,10 @@ cPlugin:
         sym.name = "powIs2"
       elif sym.name == "quad_disc":
         sym.name = "quaddisc2"
+      elif sym.name == "pari_err":
+        sym.name = "pariErr2"
+      elif sym.name == "pari_err_FILE":
+        sym.name = "pariErrFile2"
     elif sym.name == "pt_r":
       # a few functions have a parameter called pt_t
       # which collides with the ptr keyword in Nim
@@ -87,3 +92,6 @@ cImport(cSearchPath("pari/pari.h"), dynlib="dynpari", recurse = true, flags = "-
 # this can be removed when https://github.com/nimterop/nimterop/issues/206 is solved
 const ONLY_REM* {.importc: "ONLY_REM", header: "pari/pari.h".} = cast[ptr GEN](0x00000001'i32)
 const ONLY_DIVIDES* {.importc: "ONLY_DIVIDES", header: "pari/pari.h".} = cast[ptr GEN](0x00000002'i32)
+var lontyp* {.importc: "lontyp", header: "pari/pari.h".}: ptr UncheckedArray[clong]
+var pari_mstack* {.importc: "pari_mainstack",
+    header: "pari/pari.h".}: ptr pari_mainstack
