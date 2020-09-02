@@ -28,6 +28,8 @@ As Nim is case- and underscore-insensitive, some functions of pari have to be re
 |`ZX_Q_mul`       |function         |`ZX_Q_mul2`       |
 |`powis`          |function         |`powIs2`          |
 |`quad_disc`      |function         |`quaddisc2`       |
+|`pari_err`       |function         |`pariErr2`        |
+|`pari_err_FILE`  |function         |`pariErrFile2`    |
 
 ### Usage
 
