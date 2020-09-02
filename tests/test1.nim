@@ -37,6 +37,12 @@ suite "Testing global constants":
     p = ghalf
     pari_printf("This is ghalf: %Ps\n", p)
 
+  test "pari_mainstack":
+    var
+      tMsgstack = pari_mstack
+
+    check(tMsgstack != nil)
+
 suite "Testing implemented functions":
   setup:
     pari_init(500_000, 2)
