@@ -84,7 +84,7 @@ cPlugin:
 
 {.passL: "-lpari".}
 
-doAssert cSearchPath("pari/pari.h").existsFile
+doAssert cSearchPath("pari/pari.h").fileExists
 
 cImport(cSearchPath("pari/pari.h"), dynlib="dynpari", recurse = true, flags = "-c -p -f=ast2")
 
