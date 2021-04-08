@@ -31,7 +31,8 @@ static:
   cAddStdDir()
 
 cOverride:
-  const c_NONE* {.importc: "c_NONE", header: "pari/pari.h".} = 0xffff'u32
+  const
+    c_NONE* {.importc: "c_NONE", header: "pari/pari.h".} = 0xffff'u32
 
 cDefine("DISABLE_INLINE", "")
 
@@ -86,12 +87,14 @@ cPlugin:
 
 doAssert cSearchPath("pari/pari.h").fileExists
 
-cImport(cSearchPath("pari/pari.h"), dynlib="dynpari", recurse = true, flags = "-c -p -f=ast2")
+cImport(cSearchPath("pari/pari.h"), dynlib = "dynpari", recurse = true,
+    flags = "-c -p -f=ast2")
 
 # const are used before types, therefore GEN is not available as const type
 # this can be removed when https://github.com/nimterop/nimterop/issues/206 is solved
 const ONLY_REM* {.importc: "ONLY_REM", header: "pari/pari.h".} = cast[ptr GEN](0x00000001'i32)
-const ONLY_DIVIDES* {.importc: "ONLY_DIVIDES", header: "pari/pari.h".} = cast[ptr GEN](0x00000002'i32)
+const ONLY_DIVIDES* {.importc: "ONLY_DIVIDES", header: "pari/pari.h".} = cast[
+    ptr GEN](0x00000002'i32)
 var lontyp* {.importc: "lontyp", header: "pari/pari.h".}: ptr UncheckedArray[clong]
 var pari_mstack* {.importc: "pari_mainstack",
     header: "pari/pari.h".}: ptr pari_mainstack
