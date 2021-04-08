@@ -8,7 +8,7 @@ nim-pari is a [Nim](https://nim-lang.org) wrapper for the [PARI](https://pari.ma
 Nim-pari is distributed as a [Nimble](https://github.com/nim-lang/nimble) package and currently depends on the #head version of [nimterop](https://github.com/nimterop/nimterop) to generate the wrapper.
 In the current state, a previous installation of pari is required for usage. Building PARI from source might be added in the future.
 
-I started this a side project of mine to learn using Nim's [FFI](https://nim-lang.org/docs/backends.html) and [nimterop](https://github.com/nimterop/nimterop/). Nimterop is used to process most of PARI's header files, however some things still have to be converted manually. Breakage of those is therefore likely. 
+I started this a side project of mine to learn using Nim's [FFI](https://nim-lang.org/docs/backends.html) and [nimterop](https://github.com/nimterop/nimterop/). Nimterop is used to process most of PARI's header files, however some things still have to be converted manually. Breakage of those is therefore likely.
 
 As Nim is case- and underscore-insensitive, some functions of pari have to be renamed to avoid naming collisions. One example are `ZM_ZC_mul`, `ZM_zc_mul` and `zm_zc_mul`. All renamed objects will be listed in the following table:
 
@@ -30,6 +30,12 @@ As Nim is case- and underscore-insensitive, some functions of pari have to be re
 |`quad_disc`      |function         |`quaddisc2`       |
 |`pari_err`       |function         |`pariErr2`        |
 |`pari_err_FILE`  |function         |`pariErrFile2`    |
+|`RgM_zm_mul`     |function         |`RgM_zm_mul2`     |
+|`strprintf`      |function         |`strprintf2`      |
+|`getlocalprec`   |function         |`getlocalprec2`   |
+|`getlocalbitprec`|function         |`getlocalbitprec2`|
+|`permcycles`     |function         |`permcycles2`     |
+|`identity_ZV`    |function         |`identity_ZV2`    |
 
 ### Usage
 

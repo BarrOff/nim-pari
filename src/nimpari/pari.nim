@@ -78,6 +78,18 @@ cPlugin:
         sym.name = "pariErr2"
       elif sym.name == "pari_err_FILE":
         sym.name = "pariErrFile2"
+      elif sym.name == "RgM_zm_mul":
+        sym.name = "RgM_zm_mul2"
+      elif sym.name == "strprintf":
+        sym.name = "strprintf2"
+      elif sym.name == "getlocalprec":
+        sym.name = "getlocalprec2"
+      elif sym.name == "getlocalbitprec":
+        sym.name = "getlocalbitprec2"
+      elif sym.name == "permcycles":
+        sym.name = "permcycles2"
+      elif sym.name == "identity_ZV":
+        sym.name = "identity_ZV2"
     elif sym.name == "pt_r":
       # a few functions have a parameter called pt_t
       # which collides with the ptr keyword in Nim
